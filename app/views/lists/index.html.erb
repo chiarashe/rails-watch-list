@@ -1,0 +1,12 @@
+
+<h1>Here are all the Lists </h1>
+
+<ul>
+  <% @lists.each do |list| %>
+    <li class="list-group-item"> <%= link_to list.name, list_path(list) %>  </li>
+  <% end %>
+</ul>
+
+  <div class="mt-20">
+<%= link_to "add a new list", new_list_path, class:"text-decoration-none"%>
+</div>
