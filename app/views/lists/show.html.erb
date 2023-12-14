@@ -2,10 +2,11 @@
 
 <button type="button" class="btn btn-light text-decoration-none"><%= link_to "go back to all lists", lists_path%></button>
 
+<button type="button" class="btn btn-light text-decoration-none"><%= link_to "create list review", new_list_review_path(@list)%></button>
 
 <%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :comment %>
   <%= f.association :movie %>
+  <%= f.input :comment %>
   <%= f.button :submit %>
 <% end %>
 
@@ -17,5 +18,13 @@
     <li class="list-group-item"> <%= link_to bookmark.movie.rating %>  </li>
     <li class="list-group-item"> <%= link_to bookmark.comment %>  </li>
     <li class="list-group-item"> <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%> </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @list.reviews.each do |review| %>
+    <li class="list-group-item"> <%= link_to review.comment%>  </li>
+    <li class="list-group-item"> <%= link_to review.rating %>  </li>
+
   <% end %>
 </ul>
