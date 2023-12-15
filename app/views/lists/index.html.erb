@@ -1,12 +1,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="#">
     <img src="https://i.pinimg.com/474x/d3/bc/f0/d3bcf019051f0df15b1a8ab4a12934df.jpg" width="30" height="30" class="d-inline-block align-top rounded pl-1" alt="">
     My Movies
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
   <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
@@ -28,18 +25,22 @@
 
 <div class="container p-4">
 <div class="title p-3 d-flex justify-content-center">
-<h1> My Lists 🎬
-</h1>
+<h1> My Lists 🎬</h1>
 </div>
 
-<div class="cards">
-  <% @lists.each do |list| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.lifehacker.com.au/wp-content/uploads/2020/08/12/uhucudm0gkr9nmar38b9.jpg?quality=75)">
-      <%= link_to list.name, list_path(list), class:"text-decoration-none text-white" %>
-    </div>
-  <% end %>
-</div>
- <div class="mt-20">
-<%= link_to " + create a new list", new_list_path, class:"text-decoration-none nav-link d-flex justify-content-end p-4"%>
-</div>
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <% if list.photo.attached? %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key, crop: :fill %>)">
+      <% else %>
+        <div class="card-category">
+      <% end %>
+        <%= link_to list.name, list_path(list), class:"text-decoration-none text-white" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mt-20">
+    <%= link_to " + create a new list", new_list_path, class:"text-decoration-none nav-link d-flex justify-content-end p-4"%>
+  </div>
 </div>

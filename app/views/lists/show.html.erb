@@ -18,7 +18,7 @@
   </div>
 </nav>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.lifehacker.com.au/wp-content/uploads/2020/08/12/uhucudm0gkr9nmar38b9.jpg?quality=75);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @list.photo.key, crop: :fill %>);">
   <div class="container">
     <h1><%= @list.name %></h1>
   </div>

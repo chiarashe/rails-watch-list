@@ -1,4 +1,7 @@
 
+<div class="container p-5">
+  <div class="form mb-3">
 <%= render "form", list: @list %>
-
-<button type="button" class="btn btn-light text-decoration-none"><%= link_to "go back to the list", lists_path%></button>
+  </div>
+<button type="button" class="btn btn-outline-secondary"><%= link_to "go back to the list", lists_path, class:"text-decoration-none text-dark"%></button>
+</div>
